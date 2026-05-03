@@ -9,6 +9,9 @@ vim.opt.signcolumn = "yes:1" -- Preserves 1 column for LSP Highlighting
 vim.opt.scrolloff = 5 -- Shows 5 lines even when scrolling
 vim.opt.showcmd = false
 vim.opt.termguicolors = true
+vim.opt.showtabline = 2
+vim.opt.hidden = true
+vim.opt.switchbuf = "usetab,newtab"
 
 -- #### INDENTATION ####
 

@@ -14,6 +14,10 @@ vim.keymap.set("n", "<leader>n", function() Snacks.notifier.show_history() end, 
 vim.keymap.set("n", "<A-j>", "<C-d>")
 vim.keymap.set("n", "<A-k>", "<C-u>")
 
+-- Tabs
+vim.keymap.set("n", "tl", "<cmd>bnext<cr>")
+vim.keymap.set("n", "th", "<cmd>bprev<cr>")
+
 -- Diagnostics
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader>do', function() vim.diagnostic.open_float({ scope = "line" }) end, { desc = "Open diagnostic float" })
