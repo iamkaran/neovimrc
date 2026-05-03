@@ -13,3 +13,10 @@ vim.keymap.set("n", "<leader>n", function() Snacks.notifier.show_history() end, 
 -- Navigation
 vim.keymap.set("n", "<A-j>", "<C-d>")
 vim.keymap.set("n", "<A-k>", "<C-u>")
+
+-- Diagnostics
+local opts = { noremap = true, silent = true }
+vim.keymap.set('n', '<leader>do', function() vim.diagnostic.open_float({ scope = "line" }) end, { desc = "Open diagnostic float" })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+vim.keymap.set('n', '<leader>dd', '<cmd>Telescope diagnostics<CR>', { desc = "Telescope diagnostics" })

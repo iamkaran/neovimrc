@@ -9,15 +9,5 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Lualine setup
--- require('lualine').setup {
---     options = {
---         icons_enabled = true,
---         theme = 'auto',
---         component_separators = { left='>', right='<' },
---         section_separatros = { left='<<', right='<<' },
---     }
--- }
-
 -- Require sub directories
 require("config")

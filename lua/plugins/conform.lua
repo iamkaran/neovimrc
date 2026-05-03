@@ -3,9 +3,8 @@ return {
   config = function()
     require("conform").setup({
       formatters_by_ft = {
-        go = { "prettier", stop_after_first = true },
-        lua = { "prettier", stop_after_first = true },
-        python = { "prettier", stop_after_first = true },
+        go = { "gofmt", stop_after_first = true },
+        python = { "ruff", stop_after_first = true },
       },
     })
 
