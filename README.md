@@ -1,4 +1,4 @@
-# Minimal but Fast NeoVim Config for C and Go
+# Clean NeoVim Config for C and Go
 > [!NOTE]
 > LSP works on NixOS (Add gopls, clangd in pkgs)
 <img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/5657428b-6ca5-4368-8947-56b4be8bc745" />
