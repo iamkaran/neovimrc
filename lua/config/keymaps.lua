@@ -3,11 +3,15 @@ vim.keymap.set("n", "<leader>n", function() Snacks.notifier.show_history() end, 
 
 -- Navigation
 vim.keymap.set("n", "<A-d>", "<C-d>")
-vim.keymap.set("n", "<A-u>", "<C-u>")
+vim.keymap.set("n", "<A-i>", "<C-u>")
+
+vim.keymap.set("i", "<A-d>", "<Esc><C-d>i")
+vim.keymap.set("i", "<A-i>", "<Esc><C-u>i")
 
 -- Tabs
 vim.keymap.set("n", "tl", "<cmd>bnext<cr>")
 vim.keymap.set("n", "th", "<cmd>bprev<cr>")
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<cr>")
 
 -- Move lines
 vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==")
