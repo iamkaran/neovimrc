@@ -1,3 +1,24 @@
+-- Snacks notification history
+vim.keymap.set("n", "<leader>n", function() Snacks.notifier.show_history() end, { desc = "Show notification history" })
+
+-- Navigation
+vim.keymap.set("n", "<A-d>", "<C-d>")
+vim.keymap.set("n", "<A-u>", "<C-u>")
+
+-- Tabs
+vim.keymap.set("n", "tl", "<cmd>bnext<cr>")
+vim.keymap.set("n", "th", "<cmd>bprev<cr>")
+
+-- Move lines
+vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==")
+vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==")
+
+vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<cr>==gi")
+vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<cr>==gi")
+
+vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv")
+
 -- Opening and closing Netrw
 vim.keymap.set("n", "<leader>e", function()
     if vim.bo.filetype == "netrw" then
@@ -6,17 +27,6 @@ vim.keymap.set("n", "<leader>e", function()
         vim.cmd("Ex") -- Explorer (:Explorer)
     end
 end)
-
--- Snacks notification history
-vim.keymap.set("n", "<leader>n", function() Snacks.notifier.show_history() end, { desc = "Show notification history" })
-
--- Navigation
-vim.keymap.set("n", "<A-j>", "<C-d>")
-vim.keymap.set("n", "<A-k>", "<C-u>")
-
--- Tabs
-vim.keymap.set("n", "tl", "<cmd>bnext<cr>")
-vim.keymap.set("n", "th", "<cmd>bprev<cr>")
 
 -- Diagnostics
 local opts = { noremap = true, silent = true }
