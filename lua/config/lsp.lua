@@ -93,7 +93,5 @@ vim.lsp.config("clangd", {
     root_markers = { ".clangd", "compile_commands.json", "compile_flags.txt", "CMakeLists.txt", ".git" },
 })
 
-vim.lsp.enable(
-    "clangd",
-    "gopls"
-)
+vim.lsp.enable("gopls")
+vim.lsp.enable("gopls")
