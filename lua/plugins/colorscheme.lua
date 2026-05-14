@@ -4,7 +4,7 @@ return {
         name = "nightfox",
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme("carbonfox")
+            vim.cmd.colorscheme("habamax")
         end,
     },
 }
