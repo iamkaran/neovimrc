@@ -33,6 +33,7 @@ vim.cmd([[autocmd FileType * set formatoptions-=ro]]) -- No auto comment inserti
 
 -- #### DIAGNOSTICS ####
 vim.diagnostic.config({
+  update_in_insert = true;
   virtual_text = {
     -- source = "always",  -- Or "if_many"
     prefix = '●', -- Could be '■', '▎', 'x'

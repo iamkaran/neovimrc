@@ -21,3 +21,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map('<leader>f', function() require("conform").format({ bufnr = ev.buf }) end, 'Format') 
     end
 })
+
+-- Force trailing tildes to stay visible
+vim.api.nvim_create_autocmd("ColorScheme", {
+  desc = "Ensure EndOfBuffer tildes are visible",
+  callback = function()
+    -- Set the character to ~
+    vim.opt.fillchars:append({ eob = "~" })
+    
+    -- Link the color to 'NonText' (usually a subtle gray)
+    -- If they are still too hard to see, change 'NonText' to 'Comment'
+    vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'NonText' })
+  end,
+})

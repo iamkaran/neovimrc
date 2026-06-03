@@ -94,4 +94,4 @@ vim.lsp.config("clangd", {
 })
 
 vim.lsp.enable("gopls")
-vim.lsp.enable("gopls")
+vim.lsp.enable("clangd")
