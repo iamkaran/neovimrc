@@ -13,6 +13,6 @@ return {
         },
       },
     })
-    vim.cmd.colorscheme("carbonfox") -- Activate the carbonfox variant
+    vim.cmd.colorscheme("habamax")
   end,
 }   

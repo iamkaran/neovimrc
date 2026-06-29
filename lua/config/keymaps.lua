@@ -8,6 +8,8 @@ vim.keymap.set("n", "<A-u>", "<C-u>")
 vim.keymap.set("i", "<A-d>", "<Esc><C-d>i")
 vim.keymap.set("i", "<A-i>", "<Esc><C-u>i")
 
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+
 -- Tabs
 vim.keymap.set("n", "tl", "<cmd>bnext<cr>")
 vim.keymap.set("n", "th", "<cmd>bprev<cr>")
