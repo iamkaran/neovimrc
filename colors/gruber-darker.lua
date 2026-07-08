@@ -6,12 +6,13 @@ local colors = {
     comment = "#707070",
     white = "#ffffff",
     light_gray = "#a6a4a4",
-    gray = "#839395",
+    gray = "#96a6c8",
     dark_gray = "#555555",
     green = "#73c936",
     yellow = "#ffdd33",
+    brown = "#cc8c3c",
     red = "#ff0000",
-    func = "#8995A9",
+    func = "#ffdd33",
 }
 
 vim.cmd("hi clear")
@@ -51,12 +52,12 @@ end
 hi("Normal", { fg = colors.fg, bg = colors.bg })
 
 -- Treesitter syntax groups
-hi("@comment", { fg = colors.comment, italic = true })
+hi("@comment", { fg = colors.brown })
 
 hi("@constant", { fg = colors.light_gray, bold = true })
 hi("@constant.builtin", { fg = colors.light_gray, bold = true })
 
-hi("@string", { fg = colors.green, italic = true })
+hi("@string", { fg = colors.green })
 
 hi("@variable", { fg = colors.fg })
 hi("@property", { fg = colors.fg })
@@ -68,8 +69,9 @@ hi("@spell.markdown", { fg = colors.fg })
 hi("@markup.raw.markdown_inline", { fg = colors.gray })
 hi("@markup.raw.block.markdown", { fg = colors.gray })
 
-hi("@function", { fg = colors.func, bold = true })
-hi("@function.call", { fg = colors.func })
+hi("@function", { fg = colors.func })
+hi("@function.method.call.go", { fg = colors.gray })
+hi("@function.call", { fg = colors.gray })
 hi("@function.builtin", { fg = colors.func })
 
 hi("@keyword", { fg = colors.yellow, bold = true })
@@ -79,7 +81,7 @@ hi("@type.builtin", { fg = colors.gray })
 
 hi("@attribute", { fg = colors.gray })
 
-hi("@operator", { fg = colors.light_gray })
+hi("@operator", { fg = colors.fg })
 
 hi("@punctuation.delimiter", { fg = colors.gray })
 hi("@punctuation.bracket", { fg = colors.fg })

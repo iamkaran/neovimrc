@@ -64,12 +64,10 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
         },
-        keys = {
-            { '<leader><leader>', "<cmd>Telescope find_files<cr>", desc = 'Telescope find files' },
-        },
         config = function()
-            print("TREESITTER LOADED")
-            require("telescope").setup({
+            local telescope = require("telescope")
+            local builtin = require("telescope.builtin")
+            telescope.setup({
                 pickers = {
                     find_files = {
                         -- hidden = true,
@@ -91,6 +89,9 @@ return {
                     },
                 },
             })
+            vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope find files' })
+            vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = 'Telescope live grep' })
+            vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
         end,
     },
     
