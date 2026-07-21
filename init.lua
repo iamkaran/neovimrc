@@ -1,5 +1,6 @@
-require("config")
-vim.cmd.colorscheme("gruber-darker")
+vim.opt.guicursor = "n-v-i-c:block-Cursor"
+require("options")
+require("plugins")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
