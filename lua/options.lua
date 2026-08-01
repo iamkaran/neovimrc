@@ -26,12 +26,24 @@ vim.opt.undofile = true
 
 vim.keymap.set("n", "<A-d>", "<C-d>")
 vim.keymap.set("n", "<A-u>", "<C-u>")
+vim.keymap.set("v", "<A-d>", "<C-d>")
+vim.keymap.set("v", "<A-u>", "<C-u>")
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 vim.keymap.set("n", "<A-b>", "<nop>")
 vim.keymap.set("i", "<A-b>", "<nop>")
 vim.keymap.set("i", "<Select>", "<Esc><S-a>")
 
 vim.cmd([[autocmd FileType * set formatoptions-=ro]]) -- No auto comment insertion
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = vim.api.nvim_create_augroup('highlight_yank', {}),
+  desc = 'Hightlight selection on yank',
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 150 }
+  end,
+})
+
 
 local modes = {
   n = "NORMAL", i = "INSERT", v = "VISUAL", V = "V-LINE", ["\22"] = "V-BLOCK",
@@ -48,7 +60,7 @@ vim.o.statusline = " %{v:lua.statusline_mode()} | %f %m%r%h%w%=%y %l:%c  %P "
 
 -- read from saved colorscheme
 -- press <leader>cd and press enter on any colorscheme to create a save if not already
-local colorscheme = vim.fn.readfile("colorscheme.txt")
+local colorscheme = vim.fn.readfile("/home/zen/.config/nvim/colorscheme.txt")
 vim.cmd.colorscheme(colorscheme)
 
 function open_colorscheme_switcher()
@@ -61,13 +73,13 @@ function open_colorscheme_switcher()
         col = 100,
         width = 30,
         height = 10,
-        border = "single",
+        border = "rounded",
     })
     vim.keymap.set("n", "<CR>", function()
         local selected = vim.api.nvim_get_current_line()
         vim.cmd.colorscheme(selected)
         -- save colorscheme
-        vim.fn.writefile(selected, 'colorscheme.txt', 'b')
+        vim.fn.writefile(selected, "/home/zen/.config/nvim/colorscheme.txt", 'b')
     end, { buffer = 0 })
 end
 

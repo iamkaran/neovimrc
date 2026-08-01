@@ -3,8 +3,22 @@ return {
       'stevearc/conform.nvim',
       config = function()
         require("conform").setup({
+          formatters = {
+            zig_fmt = {
+                command = "zig",
+                args = { "fmt", "--stdin" },
+                stdin = true,
+            },
+            clang_fmt = {
+                command = "clang-format",
+                args = { "-style=webkit" },
+                stdin = true,
+            },
+          },
           formatters_by_ft = {
-            go = { "gofumpt", "goimports" },
+            go = { "goimports", "gofumpt"},
+            zig = { "zig_fmt" },
+            cpp = { "clang_fmt" },
           },
         })
 
@@ -93,58 +107,36 @@ return {
             vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
         end,
     },
-    
     {
-        "nvim-treesitter/nvim-treesitter",
-        branch = "master",
-        build = ":TSUpdate",
-        event = { "BufReadPost", "BufNewFile" },
-
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-        },
-
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "bash",
-                    "c",
-                    "go",
-                    "json",
-                    "lua",
-                    "python",
-                    "vim",
-                    "vimdoc",
-                    "query",
-                },
-
-                sync_install = false,
-                auto_install = true,
-
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-
-                indent = {
-                    enable = true,
-                    disable = { "yaml" },
-                },
-
-                incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = "<CR>",
-                        node_incremental = "<CR>",
-                        scope_incremental = false,
-                        node_decremental = "<BS>",
+            "nvim-treesitter/nvim-treesitter",
+            branch = "main",
+            build = ":TSUpdate",
+            
+            dependencies = {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+            },
+            
+            config = function()
+                -- On the `main` branch, setup is strictly for parser installation management.
+                require("nvim-treesitter").setup({
+                    ensure_installed = {
+                        "bash", "c", "go", "json", "lua", "python", "vim", "vimdoc", "query", "zig",
                     },
-                },
-
-                textobjects = {
-                    enable = true,
-                },
-            })
-        end,
-    }
+                    auto_install = true,
+                    
+                    -- textobjects still needs initialization, but highlight/indent are gone.
+                    textobjects = {
+                        enable = true,
+                    },
+                })
+    
+                -- Natively attach Treesitter to every buffer Neovim opens
+                vim.api.nvim_create_autocmd("FileType", {
+                    group = vim.api.nvim_create_augroup("NativeTreesitter", { clear = true }),
+                    callback = function()
+                        pcall(vim.treesitter.start)
+                    end,
+                })
+            end,
+        }
 }
